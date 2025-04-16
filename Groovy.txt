@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Neha7645/Test_HandsOn.git'
+            }
+        }
+        stage('Run JMeter Test') {
+            steps {
+                sh 'jmeter -n -t Blazemeter_Recording 1.jmx -l result.jtl'
+            }
+        }
+    }
+}
